@@ -118,10 +118,18 @@ class PropertyCard extends MonopolyCard {
 class ActionCard extends MonopolyCard {
     MonopolyDeal game; // need to affect the game here
     // action cards have an action type, which is the value field.
-
-    public ActionCard(String value, MonopolyDeal game) {
+    String action;
+    public ActionCard(String value, String action, MonopolyDeal game) {
         super(value, "Action");
+        this.action = action;
         this.game = game;
+    }
+
+    public void drawFront(PApplet sketch) {
+        super.drawFront(sketch);
+        sketch.textSize(20);
+        sketch.textAlign(sketch.LEFT, sketch.CENTER);
+        sketch.text(action, x, y + height / 2 + 16);
     }
 
     public void performAction() {

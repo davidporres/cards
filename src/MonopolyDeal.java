@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class MonopolyDeal extends CardGame {
     // i need to be able to steal sets rather than just one property card
-    // so we need to be able to select a "set" based on the selected card. 
+    // so we need to be able to select a "set" based on the selected card.
     static final String RAILROAD = "Railroad";
     static final String UTILITY = "Utility";
     static final String BROWN = "Brown";
@@ -20,7 +20,7 @@ public class MonopolyDeal extends CardGame {
     static final String DEBT_COLLECTOR = "Debt Collector";
     static final String BIRTHDAY = "It's My Birthday";
 
-    // counts of each property types 
+    // counts of each property types
     HashMap<String, Integer> propertyCounts;
 
     MonopolyDeal() {
@@ -40,7 +40,7 @@ public class MonopolyDeal extends CardGame {
     @Override
     protected void createDeck() {
         // maybe import a spreadsheet to do the cards exactly
-        // this is fine for now. 
+        // this is fine for now.
         HashMap<Integer, Integer> moneyCards = new HashMap<>();
         moneyCards.put(1, 6); // 6 $1 cards
         moneyCards.put(2, 5); // 5 $2 cards
@@ -60,8 +60,8 @@ public class MonopolyDeal extends CardGame {
         propertyCounts.put(BROWN, 2);
         propertyCounts.put(UTILITY, 2);
         propertyCounts.put(RAILROAD, 4);
-        String[] properties = {GREEN, RED, ORANGE, LIGHT_BLUE, PINK, YELLOW};
-        for (String prop: properties) {
+        String[] properties = { GREEN, RED, ORANGE, LIGHT_BLUE, PINK, YELLOW };
+        for (String prop : properties) {
             propertyCounts.put(prop, 3);
         }
         HashMap<String, Integer> propertyRents = new HashMap<>();
@@ -75,19 +75,25 @@ public class MonopolyDeal extends CardGame {
         propertyRents.put(RED, 3);
         propertyRents.put(GREEN, 3);
         propertyRents.put(BLUE, 4);
-        
+
         for (String prop : propertyCounts.keySet()) {
             int count = propertyCounts.get(prop);
             for (int i = 0; i < count; i++) {
                 // the selling value seem arbitrary, but the utilities are worth a bit more
                 deck.get(i).setClickableWidth(deck.get(i).width);
-                deck.add(new PropertyCard(String.valueOf(prop == UTILITY || prop == RAILROAD ? 2 : propertyRents.get(prop)), propertyRents.get(prop), prop));
+                deck.add(new PropertyCard(
+                        String.valueOf(prop == UTILITY || prop == RAILROAD ? 2 : propertyRents.get(prop)),
+                        propertyRents.get(prop), prop));
             }
         }
         // Add action cards (simplified, not all actions)
-        String[] actions = {PASS_GO, SLY_DEAL, DEAL_BREAKER, JUST_SAY_NO, DEBT_COLLECTOR, BIRTHDAY};
-        for (String action : actions) {
-            deck.add(new MonopolyCard(action, "Action"));
+        String[] actions = { PASS_GO, DEAL_BREAKER, JUST_SAY_NO, SLY_DEAL, DEBT_COLLECTOR, BIRTHDAY };
+        String[] actionValues = { "1", "5", "3", "4", "3", "2" };
+        int[] actionCounts = { 10, 2, 3, 3, 3, 3 }; // number of each action card
+        for (int i = 0; i < actions.length; i++) {
+            for (int j = 0; j < actionCounts[i]; j++) {
+                deck.add(new ActionCard(actionValues[i], actions[i], this));
+            }
         }
 
         for (Card card : deck) {
@@ -96,4 +102,3 @@ public class MonopolyDeal extends CardGame {
     }
 
 }
-
