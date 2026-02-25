@@ -2,7 +2,7 @@ import processing.core.PApplet;
 
 public class App extends PApplet {
 
-    CardGame cardGame = new MonopolyDeal();
+    CardGame cardGame = new ERS();
     int gameWidth = 1000;
     private int timer;
 
