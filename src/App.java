@@ -21,9 +21,14 @@ public class App extends PApplet {
         cardGame.playerOneHand.draw(this);
         // Draw computer hand
         cardGame.playerTwoHand.draw(this);
-        
-        // Draw draw button
-        cardGame.drawButton.draw(this);
+        // Stack counts (ERS / in general)
+    fill(0);
+    textSize(18);
+    text("P1 Stack: " + cardGame.playerOneHand.getSize(), 80, 580);
+    text("P2 Stack: " + cardGame.playerTwoHand.getSize(), 80, 60);
+
+    // Draw draw button
+    cardGame.drawButton.draw(this);
 
         // Display current player
         fill(0);
