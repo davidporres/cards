@@ -79,7 +79,7 @@ public class ERS extends CardGame implements KeyListener {
         }
     }
 
-   // @Override
+/*    // @Override
     public void keyPressed(KeyEvent e) {
     int keyCode = e.getKeyCode();
     switch (keyCode) {
@@ -96,6 +96,5 @@ public class ERS extends CardGame implements KeyListener {
             // Handle the 'l' key -- p2 slap
             break;
         
-    }
-}
+    }*/
 }
