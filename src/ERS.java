@@ -1,8 +1,7 @@
 import java.util.Collections;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class ERS extends CardGame implements KeyListener {
+public class ERS extends CardGame {
 
     private static final int CARDS_PER_PLAYER = 26;
 
@@ -20,7 +19,8 @@ public class ERS extends CardGame implements KeyListener {
     private static final int stackYOffset = 2;
 
     public ERS() {
-        // cardgame constructor already initializes and deals
+        // CardGame constructor already initializes and deals
+ 
     }
 
     @Override
@@ -39,7 +39,6 @@ public class ERS extends CardGame implements KeyListener {
     @Override
     protected void initializeGame() {
         super.initializeGame();
-        // no rules yet: no starting discard pile card
         discardPile.clear();
         lastPlayedCard = null;
     }
@@ -54,7 +53,7 @@ public class ERS extends CardGame implements KeyListener {
 
         for (int i = 0; i < CARDS_PER_PLAYER; i++) {
             Card c1 = deck.remove(0);
-            c1.setTurned(true); // ERS stacks are face-down
+            c1.setTurned(true); // face-down stack
             playerOneHand.addCard(c1);
 
             Card c2 = deck.remove(0);
@@ -79,22 +78,21 @@ public class ERS extends CardGame implements KeyListener {
         }
     }
 
-/*    // @Override
-    public void keyPressed(KeyEvent e) {
-    int keyCode = e.getKeyCode();
-    switch (keyCode) {
-        case KeyEvent.p:
-            // Handle p key -- p1 play card
-            break;
-        case KeyEvent.q:
-            // Handle q key -- p2 play card
-            break;
-        case KeyEvent.a:
-            // Handle the a key -- p1 slap
-            break;
-        case KeyEvent.l:
-            // Handle the 'l' key -- p2 slap
-            break;
-        
-    }*/
+
+    public void handleKey(int keyCode) {
+        switch (keyCode) {
+            case KeyEvent.VK_P:
+                // p1 play card
+                break;
+            case KeyEvent.VK_Q:
+                // p2 play card
+                break;
+            case KeyEvent.VK_A:
+                // p1 slap
+                break;
+            case KeyEvent.VK_L:
+                // p2 slap
+                break;
+        }
+    }
 }

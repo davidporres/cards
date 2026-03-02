@@ -195,3 +195,24 @@ public class CardGame {
         // if you want to draw additional things (like Uno's wild color choices)
     }
 }
+
+   // @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.VK_P:
+                // Handle p key -- p1 play card
+                break;
+            case KeyEvent.VK_Q:
+                // Handle q key -- p2 play card
+                break;
+            case KeyEvent.VK_A:
+                // Handle the a key -- p1 slap
+                break;
+            case KeyEvent.VK_L:
+                // Handle the 'l' key -- p2 slap
+                break;
+
+        }
+    }
+
