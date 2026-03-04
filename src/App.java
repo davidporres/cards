@@ -27,8 +27,10 @@ public class App extends PApplet {
     text("P1 Stack: " + cardGame.playerOneHand.getSize(), 80, 580);
     text("P2 Stack: " + cardGame.playerTwoHand.getSize(), 80, 60);
 
-    // Draw draw button
+    // Draw draw button if not ers (idk abt the other games but mine doesn't want a draw pile)
+    if (!(cardGame instanceof ERS)) {
     cardGame.drawButton.draw(this);
+}
 
         // Display current player
         fill(0);
@@ -60,8 +62,11 @@ public class App extends PApplet {
     
     @Override
     public void mousePressed() {
-        cardGame.handleDrawButtonClick(mouseX, mouseY);
-        cardGame.handleCardClick(mouseX, mouseY);
+        //don't do draw button stuff if ers
+        if (!(cardGame instanceof ERS)) {
+    cardGame.handleDrawButtonClick(mouseX, mouseY);
+    }
+    cardGame.handleCardClick(mouseX, mouseY);
     }
 
     
